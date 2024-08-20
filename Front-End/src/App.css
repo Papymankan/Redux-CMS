@@ -70,7 +70,7 @@
 */
 
 /* LAYOUTS CSS */
-@import "layouts/_sidebar-admin.css";
+/* @import "layouts/_sidebar-admin.css"; */
 
 * {
   margin: 0;
@@ -87,8 +87,8 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
-  font-size: var(--font-size-default);
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-default) !important;
   background-color: var(--light);
   transition: all 0.4s;
   position: relative;
@@ -337,7 +337,7 @@ body {
 }
 
 .form__input::placeholder {
-  font-family: var(--font-primary);
+  font-family: var(--font-primary) !important;
 }
 
 .form__label {
@@ -532,7 +532,7 @@ body {
 }
 
 .card-body {
-  padding: 6rem 3rem;
+  padding: 6rem 3rem !important;
 }
 
 .sidebar__top-name {
