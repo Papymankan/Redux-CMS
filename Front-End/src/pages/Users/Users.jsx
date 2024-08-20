@@ -1,6 +1,8 @@
 import React from "react";
-import "./Users.css";
 import { Link } from "react-router-dom";
+import UserItem from "../../components/UserItem/UserItem";
+
+import "./Users.css";
 
 export default function Users() {
   return (
@@ -14,10 +16,10 @@ export default function Users() {
             </Link>
           </li>
           <li class="content__tab">
-            <a href="infomation-admin.html" class="content__tab-link">
+            <Link to="/infos" class="content__tab-link">
               <span class="fa fa-book"></span>
               اطلاعات
-            </a>
+            </Link>
           </li>
           <li class="content__tab">
             <Link to="/courses" class="content__tab-link">
@@ -33,7 +35,6 @@ export default function Users() {
             </Link>
           </li>
         </ul>
-        <div class="active"></div>
 
         <div class="users">
           <form action="#" class="form row justify-content-between gap-3 mx-0">
@@ -56,26 +57,9 @@ export default function Users() {
 
           <div class="users__list-container">
             <div class="users__list users__list-wrapper">
-              <div class="uesrs__item">
-                <div class="users__info">
-                  <img
-                    src="../../img/admin/profile/banana.png"
-                    alt="photo user"
-                    class="users__img"
-                  />
-                  <div class="users__details">
-                    <p class="users__name my-0">محمدامین سعیدی راد</p>
-                    <p lang="en" class="users__email">
-                      ce01010101it@gmail.com
-                    </p>
-                  </div>
-                </div>
-                <div class="users__btns">
-                  <button class="btn-custome btn-custome--gray">پیام ها</button>
-                  <button class="btn-custome btn-custome__blue">اطلاعات</button>
-                  <button class="btn-custome btn-custome__red">حذف</button>
-                </div>
-              </div>
+              <UserItem />
+              <UserItem />
+              <UserItem />
             </div>
           </div>
         </div>

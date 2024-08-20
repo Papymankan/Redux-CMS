@@ -16,10 +16,10 @@ export default function Articles() {
             </Link>
           </li>
           <li class="content__tab">
-            <a href="infomation-admin.html" class="content__tab-link">
+            <Link to="/infos" class="content__tab-link">
               <span class="fa fa-book"></span>
               اطلاعات
-            </a>
+            </Link>
           </li>
           <li class="content__tab">
             <Link to="/courses" class="content__tab-link">
