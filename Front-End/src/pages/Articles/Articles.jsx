@@ -1,10 +1,10 @@
 import React from "react";
-
-import "./Courses.css";
-import CourseBox from "../../components/CourseBox/CourseBox";
 import { Link } from "react-router-dom";
+import ArticleBox from "./../../components/ArticleBox/ArticleBox";
 
-export default function Courses() {
+import "./Articles.css";
+
+export default function Articles() {
   return (
     <div class="col-8 content px-0">
       <div class="content__wrapper d-flex flex-column align-content-between">
@@ -37,40 +37,26 @@ export default function Courses() {
         </ul>
         <div class="active"></div>
 
-        <div class="products products-container">
-          <div class="products__list products-wrapper">
-            <CourseBox />
-            <CourseBox />
-            <CourseBox />
-            <CourseBox />
+        <div class="articles">
+          <div class="articles__list">
+            <ArticleBox />
+            <ArticleBox />
+            <ArticleBox />
+            <ArticleBox />
           </div>
         </div>
-      </div>
-      <div class="new-course d-flex gap-2">
-        <button
-          class="btn-custome btn-custome__blue"
-          data-bs-toggle="modal"
-          data-bs-target="#new-product"
-        >
-          افزودن دوره جدید
-        </button>
-        <button
-          class="btn-custome btn-custome__red"
-          data-bs-toggle="modal"
-          data-bs-target="#add-discount-all-product"
-        >
-          اعمال تخفیف همه دوره‌ها
-        </button>
-        <button
-          class="btn-custome btn-custome__green btn-modal-new-category"
-          data-bs-toggle="modal"
-          data-bs-target="#add-new-category"
-        >
-          افزودن دسته بندی
-        </button>
-      </div>
 
-
+        <div class="new-article">
+          <button
+            class="btn-custome btn-custome__blue"
+            data-bs-toggle="modal"
+            data-bs-target="#new-article"
+            id="btn-modal-new-article"
+          >
+            افزودن مقاله جدید
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

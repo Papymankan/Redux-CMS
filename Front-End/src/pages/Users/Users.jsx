@@ -8,7 +8,7 @@ export default function Users() {
       <div class="content__wrapper">
         <ul class="content__tabs">
           <li class="content__tab">
-            <Link to={'/users'} class="content__tab-link">
+            <Link to="/users" class="content__tab-link">
               <span class="fa fa-user"></span>
               کاربران
             </Link>
@@ -27,10 +27,10 @@ export default function Users() {
           </li>
 
           <li class="content__tab">
-            <a href="weblog-admin.html" class="content__tab-link">
+            <Link to="/articles" class="content__tab-link">
               <span class="fa fa-newspaper"></span>
               وبلاگ
-            </a>
+            </Link>
           </li>
         </ul>
         <div class="active"></div>
