@@ -1,5 +1,6 @@
 import React from "react";
 import "./Users.css";
+import { Link } from "react-router-dom";
 
 export default function Users() {
   return (
@@ -7,10 +8,10 @@ export default function Users() {
       <div class="content__wrapper">
         <ul class="content__tabs">
           <li class="content__tab">
-            <a href="users-admin.html" class="content__tab-link">
+            <Link to={'/users'} class="content__tab-link">
               <span class="fa fa-user"></span>
               کاربران
-            </a>
+            </Link>
           </li>
           <li class="content__tab">
             <a href="infomation-admin.html" class="content__tab-link">
@@ -19,10 +20,10 @@ export default function Users() {
             </a>
           </li>
           <li class="content__tab">
-            <a href="products-admin.html" class="content__tab-link">
+            <Link to="/courses" class="content__tab-link">
               <span class="fa fa-store"></span>
               دوره‌ها
-            </a>
+            </Link>
           </li>
 
           <li class="content__tab">

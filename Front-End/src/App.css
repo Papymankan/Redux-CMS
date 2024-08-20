@@ -91,7 +91,7 @@ body {
   font-size: var(--font-size-default) !important;
   background-color: var(--light);
   transition: all 0.4s;
-  position: relative;
+  /* position: relative; */
 }
 
 *[lang="en"] {
@@ -522,7 +522,7 @@ body {
 /* Main Layout */
 .main {
   margin: 8rem 0;
-  height: 58rem;
+  height: auto !important;
 }
 /* End Main Layout */
 
