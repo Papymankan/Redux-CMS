@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import UserItem from "../../components/UserItem/UserItem";
+import { fetchUsers } from "../../Redux/Reducer/Users";
+import store from "../../Redux/store";
+
 
 import "./Users.css";
+import { useSelector } from "react-redux";
 
 export default function Users() {
+
+  useEffect(() => {
+    store.dispatch(fetchUsers('https://dummyjson.com/users'))
+  }, [])
+
+  const users = useSelector(state => state.users)
+
   return (
     <div class="col-8 content px-0">
       <div class="content__wrapper">
