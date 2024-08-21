@@ -6,12 +6,10 @@ export const fetchCourses = createAsyncThunk('courses/fetchCourses', async (url)
 
 const slice = createSlice({
     name: 'courses',
-    initialState:[],
+    initialState: [],
     reducers: {},
     extraReducers: builder => {
-        builder.addCase(fetchCourses.fulfilled , (state , action)=>{
-            state.push(...action.payload)
-        })
+        builder.addCase(fetchCourses.fulfilled, (state, action) => action.payload)
     }
 })
 
