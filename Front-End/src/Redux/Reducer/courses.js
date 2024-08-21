@@ -1,15 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchUsers = createAsyncThunk('user/fetchUsers', async (url) => {
+export const fetchCourses = createAsyncThunk('courses/fetchCourses', async (url) => {
     return fetch(url).then(res => res.json()).then(data => data)
 })
 
 const slice = createSlice({
-    name: 'users',
+    name: 'courses',
     initialState:[],
     reducers: {},
     extraReducers: builder => {
-        builder.addCase(fetchUsers.fulfilled , (state , action)=>{
+        builder.addCase(fetchCourses.fulfilled , (state , action)=>{
             state.push(...action.payload)
         })
     }
