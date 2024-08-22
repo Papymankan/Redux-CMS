@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import UserItem from "../../components/UserItem/UserItem";
-import { fetchUsers } from "../../Redux/Reducer/Users";
+import { fetchUsers } from "../../Redux/Reducer/users";
 import store from "../../Redux/store";
 
 

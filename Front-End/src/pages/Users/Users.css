@@ -91,6 +91,15 @@
   fill: var(--green);
 }
 
+.swal2-title{
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.swal2-confirm , .swal2-cancel{
+  font-size: 16px;
+}
+
 /* dark mode */
 
 .dark .sender-tickets-details {
