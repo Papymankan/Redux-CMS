@@ -1,6 +1,34 @@
 import React from "react";
+import Swal from "sweetalert2";
+import { removeCourse } from "../../Redux/Reducer/courses";
+import store from "../../Redux/store";
 
-export default function CourseBox({ title, category, price, registersCount, discount, desc }) {
+export default function CourseBox({ title, category, price, registersCount, discount, desc, _id }) {
+
+  const removeHandler = (id) => {
+    console.log('öööö');
+    
+    Swal.fire({
+      title: "<strong>آیا از حذف اطمینان دارید ؟</strong>",
+      icon: "warning",
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      showLoaderOnConfirm: true,
+      confirmButtonText: `
+          بله
+        `,
+      cancelButtonText: `
+          خیر
+        `
+    }).then(res => {
+      if (res.isConfirmed) {
+        console.log(res);
+        store.dispatch(removeCourse(`https://redux-cms.iran.liara.run/api/courses/${id}`))
+      }
+    })
+  }
+
   return (
     <div className="products__item">
       <img
@@ -39,7 +67,7 @@ export default function CourseBox({ title, category, price, registersCount, disc
             </div>
           </div>
           <div className="products__btns">
-            <button className="btn btn-danger btn-lg">حذف</button>
+            <button className="btn btn-danger btn-lg" onClick={() => removeHandler(_id)}>حذف</button>
             <button className="btn btn-info btn-lg">ویرایش</button>
           </div>
         </div>

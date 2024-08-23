@@ -5,7 +5,7 @@ export const fetchArticles = createAsyncThunk('articles/fetchArticles', async (u
     return fetch(url).then(res => res.json()).then(data => data)
 })
 
-export const removeArticle = createAsyncThunk('article/removeArticle', async (url) => {
+export const removeArticle = createAsyncThunk('articles/removeArticle', async (url) => {
     Swal.fire({
         title: "<strong>در حال حذف کردن ...</strong>",
         icon: "warning",
