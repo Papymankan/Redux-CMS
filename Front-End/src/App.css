@@ -345,13 +345,13 @@ body {
   border-bottom: 1px solid transparent;
 }
 
-.form__input:valid {
+/* .form__input:valid {
   border-bottom: 3px solid var(--green);
 }
 
 .form__input:invalid {
   border-bottom: 3px solid var(--red);
-}
+} */
 
 .form__input::placeholder {
   font-family: var(--font-primary) !important;
@@ -763,4 +763,16 @@ body {
   src: url("./fonts/Gandom.eot") format("eot"),
     url("./fonts/Gandom.ttf") format("truetype"),
     url("./fonts/Gandom.woff") format("woff");
+}
+
+.show-modal {
+  display: block !important;
+}
+.modal-header{
+  width: 100% !important;
+  /* display: flex !important; */
+  justify-content: space-between !important;
+}
+.modal-header>button{
+  margin: 0 !important;
 }
