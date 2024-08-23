@@ -20,7 +20,7 @@ export const removeCourse = createAsyncThunk('courses/removeCourse', async (url)
     return fetch(url, { method: 'DELETE' }).then(res => {
         if (res.ok) {
             Swal.fire({
-                title: "<strong>مقاله با موفقیت حذف شد</strong>",
+                title: "<strong>دوره با موفقیت حذف شد</strong>",
                 icon: "success",
                 timer: 1000,
                 showConfirmButton: false

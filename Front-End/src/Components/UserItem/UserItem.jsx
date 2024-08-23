@@ -22,12 +22,6 @@ export default function UserItem({ firstname, lastname, email, _id }) {
         }).then(res => {
             if (res.isConfirmed) {
                 store.dispatch(removeUser(`https://redux-cms.iran.liara.run/api/users/${id}`))
-                Swal.fire({
-                    title: "<strong>کاربر با موفقیت حذف شد</strong>",
-                    icon: "success",
-                    timer:1000,
-                    showConfirmButton:false
-                })
             }
         });
     }
