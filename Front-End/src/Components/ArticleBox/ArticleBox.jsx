@@ -1,6 +1,32 @@
 import React from "react";
+import store from "../../Redux/store";
+import { removeArticle } from "../../Redux/Reducer/articles";
+import Swal from "sweetalert2";
 
-export default function ArticleBox({title , category , views , desc}) {
+export default function ArticleBox({ title, category, views, desc, _id }) {
+
+  const removeHandler = (id) => {
+    Swal.fire({
+      title: "<strong>آیا از حذف اطمینان دارید ؟</strong>",
+      icon: "warning",
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      showLoaderOnConfirm: true,
+      confirmButtonText: `
+          بله
+        `,
+      cancelButtonText: `
+          خیر
+        `
+    }).then(res => {
+      if (res.isConfirmed) {
+        store.dispatch(removeArticle(`https://redux-cms.iran.liara.run/api/articles/${id}`))
+
+      }
+    })
+  }
+
   return (
     <div className="articles__item">
       <img
@@ -33,7 +59,7 @@ export default function ArticleBox({title , category , views , desc}) {
             </div>
           </div>
           <div className="articles__btns">
-            <button className="op-btn btn btn-danger btn-lg">حذف</button>
+            <button className="op-btn btn btn-danger btn-lg" onClick={() => removeHandler(_id)}>حذف</button>
             <button className="op-btn btn btn-info btn-lg">ویرایش</button>
           </div>
         </div>
