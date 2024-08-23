@@ -165,40 +165,6 @@ export default function Infos() {
                       </label>
                     </div>
 
-                    <div className="change-profile-box px-0 d-flex gap-4 mb-4">
-                      <div className="change-profile-input-box">
-                        <img
-                          src="../../img/admin/profile/banana.png"
-                          className="change-profile-pic"
-                          alt=""
-                        />
-                        <label
-                          for="upload-profile-input"
-                          className="upload-profile-input-label"
-                        >
-                          <input
-                            type="file"
-                            id="upload-profile-input"
-                            name=""
-                          />
-                        </label>
-                      </div>
-
-                      <div className="change-banner-input-box">
-                        <img
-                          src="../../img/admin/banner/banner.png"
-                          className="change-banner-pic"
-                          alt=""
-                        />
-                        <label
-                          for="upload-banner-input"
-                          className="upload-banner-input-label"
-                        >
-                          <input type="file" id="upload-banner-input" name="" />
-                        </label>
-                      </div>
-                    </div>
-
                     <button className="btn-custome btn-custome__blue col-6 mb-3">
                       اپدیت اطلاعات
                     </button>

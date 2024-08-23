@@ -51,7 +51,10 @@ export default function Articles() {
         <div className="articles">
           <div className="articles__list">
             {
-              articles.map(article =>  <ArticleBox key={article._id} {...article} />)
+
+              articles.length > 0 ?
+                articles.map(articles => <ArticleBox key={articles._id} {...articles} />) :
+                <div class="loader"></div>
             }
           </div>
         </div>

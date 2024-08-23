@@ -50,9 +50,10 @@ export default function Courses() {
         <div className="products products-container">
           <div className="products__list products-wrapper">
             {
-              courses.map(course => <CourseBox key={course._id} {...course}/>)
-            }
-            
+                courses.length > 0 ?
+                  courses.map(course => <CourseBox key={course._id} {...course} />) :
+                  <div class="loader"></div>
+              }
 
           </div>
         </div>
