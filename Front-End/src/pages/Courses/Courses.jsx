@@ -22,6 +22,9 @@ export default function Courses() {
   const [discount, setDiscount] = useState('')
   const [desc, setDesc] = useState('')
 
+
+  const [dicountAll, setDicountAll] = useState(0)
+
   const courses = useSelector(state => state.courses)
   console.log(courses);
 
@@ -51,6 +54,32 @@ export default function Courses() {
           `
       })
     }
+  }
+
+  const fireDiscountModal = () => {
+    Swal.fire({
+      title: 'مقدار تخفیف را وارد کنید',
+      input: 'number',
+      inputAttributes: {
+        placeholder: 'مثال 50',
+        // min: 0,
+        // max: 100,
+      },
+      preConfirm: (value) => {
+        if (value > 100 || value < 0) {
+          console.log(value);
+          Swal.showValidationMessage('درصد باید بین 0 تا 100 باشد');
+          return false;
+        }else true
+      },
+      confirmButtonText: 'اعمال',
+      showCancelButton: true,
+      cancelButtonText: 'انصراف'
+    }).then(res => {
+      if(res.isConfirmed){
+        
+      }
+    })
   }
 
   return (
@@ -261,6 +290,7 @@ export default function Courses() {
           className="btn-custome btn-custome__red"
           data-bs-toggle="modal"
           data-bs-target="#add-discount-all-product"
+          onClick={fireDiscountModal}
         >
           اعمال تخفیف همه دوره‌ها
         </button>

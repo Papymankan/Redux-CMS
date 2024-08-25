@@ -9,6 +9,9 @@ export const createCourse = createAsyncThunk('courses/createCourse', async (url 
     console.log(course);
     return fetch(url , {
         method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
         body:JSON.stringify(course)
     }).then(res => {
         if (res.ok) {
@@ -53,6 +56,33 @@ export const removeCourse = createAsyncThunk('courses/removeCourse', async (url)
         return data
     })
 })
+
+// export const addDiscount = createAsyncThunk('courses/addDiscount', async (url , discount) => {
+//     Swal.fire({
+//         title: "<strong>در حال حذف کردن ...</strong>",
+//         icon: "warning",
+//         showCloseButton: false,
+//         showCancelButton: false,
+//         showLoaderOnConfirm: true,
+//         showConfirmButton: false,
+//         didOpen: () => {
+//             Swal.showLoading()
+//         }
+//     })
+//     return fetch(url, { method: 'Post' }).then(res => {
+//         if (res.ok) {
+//             Swal.fire({
+//                 title: "<strong>دوره با موفقیت حذف شد</strong>",
+//                 icon: "success",
+//                 timer: 1000,
+//                 showConfirmButton: false
+//             })
+//         }
+//         return res.json()
+//     }).then(data => {
+//         return data
+//     })
+// })
 
 const slice = createSlice({
     name: 'courses',

@@ -776,3 +776,7 @@ body {
 .modal-header>button{
   margin: 0 !important;
 }
+#swal2-input{
+  padding: 10px;
+  font-size: 17px;
+}
