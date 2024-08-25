@@ -28,11 +28,11 @@ export default function CourseBox({ title, category, price, registersCount, disc
   }
 
   return (
-    <div className="products__item">
+    <div className="products__item dark">
       <img
         src="../../img/store/redux.png"
         alt="product-img-1"
-        className="products__img"
+        className="products__img dark"
       />
       <div className="products__details w-100">
         <div className="products__info">
@@ -41,7 +41,7 @@ export default function CourseBox({ title, category, price, registersCount, disc
             {desc}
           </p>
         </div>
-        <div className="products__tags">
+        <div className="products__tags ">
           <div className="products__boxes">
             <div className="products__price-box">
               <span className="fa fa-wallet"></span>

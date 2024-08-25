@@ -1,4 +1,6 @@
 import React from 'react'
+import { toDark, toLight } from '../../Redux/Reducer/theme'
+import store from '../../Redux/store';
 
 export default function NavBar() {
     return (
@@ -18,7 +20,13 @@ export default function NavBar() {
                     </div>
                 </div>
                 <div className="header__btns">
-                    <button className="btn-custome btn-header__dark-mode">
+                    <button className="btn-custome btn-header__dark-mode" onClick={() => {
+                        if (store.getState().theme.mode == 'light') {
+                            store.dispatch(toDark())
+                        }else{
+                            store.dispatch(toLight())
+                        }
+                    }}>
                         <span className="fa fa-sun header__icon"></span>
                     </button>
 

@@ -158,15 +158,15 @@
   /* DARK MODE */
   .dark .new-course,
   .dark .products__tags {
-    background-color: var(--primary-color);
-    color: var(--light);
+    background-color: var(--primary-color) !important;
+    color: var(--light) !important;
   }
   
   .dark .products__img {
-    filter: brightness(60%);
+    filter: brightness(60%) !important;
   }
   .dark .products__item:hover .products__img {
-    filter: brightness(100%);
+    filter: brightness(100%) !important;
   }
   
   .dark .tags-box {
