@@ -7,7 +7,6 @@ export const fetchCourses = createAsyncThunk('courses/fetchCourses', async (url)
 })
 
 export const createCourse = createAsyncThunk('courses/createCourse', async ({url, course}) => {
-    console.log(course);
     return fetch(url, {
         method: 'POST',
         headers: {
@@ -17,11 +16,13 @@ export const createCourse = createAsyncThunk('courses/createCourse', async ({url
     }).then(res => {
         if (res.ok) {
             Swal.fire({
-                title: "<strong>دوره با اضافه شد</strong>",
+                title: "<strong>دوره با موفقیت اضافه شد</strong>",
                 icon: "success",
                 timer: 1000,
                 showConfirmButton: false
             })
+            store.dispatch(fetchCourses('https://redux-cms.iran.liara.run/api/courses'))
+
         }
         return res.json()
     }).then(data => {

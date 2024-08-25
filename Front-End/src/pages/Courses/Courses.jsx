@@ -34,13 +34,15 @@ export default function Courses() {
       registersCount.length &&
       discount.length &&
       desc.length) {
-      store.dispatch(createCourse('https://redux-cms.iran.liara.run/api/courses', {
-        title,
-        price,
-        category,
-        registersCount,
-        discount,
-        desc,
+      store.dispatch(createCourse({
+        url: 'https://redux-cms.iran.liara.run/api/courses', course: {
+          title,
+          price,
+          category,
+          registersCount,
+          discount,
+          desc,
+        }
       }))
     } else {
       Swal.fire({
@@ -70,16 +72,16 @@ export default function Courses() {
           console.log(value);
           Swal.showValidationMessage('درصد باید بین 0 تا 100 باشد');
           return false;
-        }else true
+        } else true
       },
       confirmButtonText: 'اعمال',
       showCancelButton: true,
       cancelButtonText: 'انصراف'
     }).then(res => {
-      if(res.isConfirmed){
+      if (res.isConfirmed) {
         console.log(res.value);
-        
-        store.dispatch(addDiscount({url:'https://redux-cms.iran.liara.run/api/courses/discount' , discount : res.value}))
+
+        store.dispatch(addDiscount({ url: 'https://redux-cms.iran.liara.run/api/courses/discount', discount: res.value }))
       }
     })
   }
