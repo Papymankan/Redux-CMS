@@ -5,9 +5,7 @@ import store from "../../Redux/store";
 
 export default function CourseBox({ title, category, price, registersCount, discount, desc, _id }) {
 
-  const removeHandler = (id) => {
-    console.log('öööö');
-    
+  const removeHandler = (id) => {    
     Swal.fire({
       title: "<strong>آیا از حذف اطمینان دارید ؟</strong>",
       icon: "warning",
@@ -51,7 +49,7 @@ export default function CourseBox({ title, category, price, registersCount, disc
               <span className="product__teg-text">قیمت :</span>
               <span className="product__teg-text products__price-value">{price ? price.toLocaleString() : 'رایگان'}</span>
             </div>
-            <div className="products__category-box">
+            <div className="products__category-bjox">
               <span className="fa fa-folder"></span>
 
               <span className="product__teg-text">دسته بندی :</span>

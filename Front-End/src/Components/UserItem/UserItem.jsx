@@ -28,6 +28,19 @@ export default function UserItem({ firstname, lastname, username, city, age, ema
         });
     }
 
+    const showNotifs = () => {
+        Swal.fire({
+            title: "<strong>پیامی وجود ندارد</strong>",
+            // icon: "warning",
+            showCloseButton: true,
+            showCancelButton: true,
+            showConfirmButton:false,
+            cancelButtonText: `
+              بستن
+            `
+        })
+    }
+
 
     return (
 
@@ -172,7 +185,7 @@ export default function UserItem({ firstname, lastname, username, city, age, ema
                     </div>
                 </div>
                 <div className="users__btns">
-                    <button className="btn-custome btn-custome--gray">پیام ها</button>
+                    <button className="btn-custome btn-custome--gray" onClick={() => showNotifs()}>پیام ها</button>
                     <button className="btn-custome btn-custome__blue" onClick={() => setIsShowModal(true)}>جزئیات</button>
                     <button className="btn-custome btn-custome__red" onClick={() => removeHandler(_id)}>حذف</button>
                 </div>
