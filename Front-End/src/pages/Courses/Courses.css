@@ -173,4 +173,6 @@
     border: 1px solid var(--white-low-opacity);
   }
   /* END DARK MODE */
-  
+  #categories-box{
+    width: 100%;
+  }

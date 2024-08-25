@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 import { addDiscount, createCourse, fetchCourses } from "../../Redux/Reducer/courses";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { fetchCategories } from "../../Redux/Reducer/categories";
 
 export default function Courses() {
 
   useEffect(() => {
     store.dispatch(fetchCourses('https://redux-cms.iran.liara.run/api/courses'))
+    store.dispatch(fetchCategories('https://redux-cms.iran.liara.run/api/categories'))
   }, [])
 
   const [isShowModal, setIsShowModal] = useState(false)
@@ -22,11 +24,9 @@ export default function Courses() {
   const [discount, setDiscount] = useState('')
   const [desc, setDesc] = useState('')
 
-
-  const [dicountAll, setDicountAll] = useState(0)
-
   const courses = useSelector(state => state.courses)
-  console.log(courses);
+  const categories = useSelector(state => state.categories)
+  console.log(categories);
 
   const addNewCourse = () => {
     if (title.length && price.length &&
@@ -44,6 +44,7 @@ export default function Courses() {
           desc,
         }
       }))
+      setIsShowModal(false)
     } else {
       Swal.fire({
         title: "<strong>اطلاعات دوره را کامل وارد کنید</strong>",
@@ -148,9 +149,7 @@ export default function Courses() {
                       value={title}
                       class="form-control form__input input-user-firstname"
                     />
-                    <label for="firstname" class="form__label my-0">
-                      نام{" "}
-                    </label>
+
                   </div>
 
                   <div class="form__box-input col-12 px-2">
@@ -166,28 +165,24 @@ export default function Courses() {
                       id="lastname"
                       class="form-control form__input input-user-lastname"
                     />
-                    <label for="lastname" class="form__label my-0">
-                      نام خانوادگی
-                    </label>
+
                   </div>
 
                   <div class="form__box-input col-12 px-2">
                     <span class="fa fa-bars form__icon"></span>
-                    <input
-                      lang="en"
-                      placeholder={'دسته بندی'}
-                      type="text"
-                      name=""
+                    <select name="category"
+                      id="categories-box"
                       onChange={(e) => {
                         setCategory(e.target.value)
                       }}
-                      value={category}
-                      id="username"
-                      class="form-control form__input input-user-username"
-                    />
-                    <label for="username" class="form__label my-0">
-                      نام کاربری
-                    </label>
+                      value={ category }
+                    >
+                      <option value="none" hidden selected>دسته بندی</option>
+                      {
+                        categories.map(cat => <option value={cat.title}>{cat.title}</option>)
+                      }
+                      
+                    </select>
                   </div>
 
                   <div class="form__box-input col-12 px-2">
@@ -204,9 +199,6 @@ export default function Courses() {
                       id="email"
                       class="form-control form__input input-user-email"
                     />
-                    <label for="email" class="form__label my-0" lang="en">
-                      ایمیل
-                    </label>
                   </div>
 
                   <div class="form__box-input col-12 px-2">
@@ -222,10 +214,7 @@ export default function Courses() {
                       value={discount}
                       class="form-control form__input input-user-password"
                     />
-                    <label for="password" class="form__label my-0">
-                      {" "}
-                      شهر
-                    </label>
+
                   </div>
                   <div class="form__box-input col-12 px-2">
                     <span class="fa fa-paragraph form__icon"></span>
@@ -241,9 +230,7 @@ export default function Courses() {
                       class="form-control form__input input-user-product"
                       readonly
                     />
-                    <label for="count-product" class="form__label my-0">
-                      سن
-                    </label>
+
                   </div>
                 </form>
               </div>

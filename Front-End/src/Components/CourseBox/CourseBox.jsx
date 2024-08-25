@@ -49,7 +49,7 @@ export default function CourseBox({ title, category, price, registersCount, disc
               <span className="product__teg-text">قیمت :</span>
               <span className="product__teg-text products__price-value">{price ? price.toLocaleString() : 'رایگان'}</span>
             </div>
-            <div className="products__category-bjox">
+            <div className="products__category-box">
               <span className="fa fa-folder"></span>
 
               <span className="product__teg-text">دسته بندی :</span>

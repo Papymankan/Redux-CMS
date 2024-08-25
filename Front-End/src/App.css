@@ -307,6 +307,7 @@ body {
 }
 
 .form__box-input {
+  margin: 10px 0;
   position: relative;
   display: flex;
 }

@@ -101,7 +101,7 @@ const slice = createSlice({
     initialState: [],
     reducers: {},
     extraReducers: builder => {
-        builder.addCase(fetchCourses.fulfilled, (state, action) => action.payload)
+        builder.addCase(fetchCourses.fulfilled, (state, action) => [...action.payload])
             .addCase(removeCourse.fulfilled, (state, action) => {
                 console.log(state, action);
                 if (action.payload.id) {
