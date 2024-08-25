@@ -3,7 +3,7 @@ import store from "../../Redux/store";
 import "./Courses.css";
 import CourseBox from "../../Components/CourseBox/CourseBox";
 import { Link } from "react-router-dom";
-import { createCourse, fetchCourses } from "../../Redux/Reducer/courses";
+import { addDiscount, createCourse, fetchCourses } from "../../Redux/Reducer/courses";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
@@ -77,7 +77,9 @@ export default function Courses() {
       cancelButtonText: 'انصراف'
     }).then(res => {
       if(res.isConfirmed){
+        console.log(res.value);
         
+        store.dispatch(addDiscount({url:'https://redux-cms.iran.liara.run/api/courses/discount' , discount : res.value}))
       }
     })
   }
