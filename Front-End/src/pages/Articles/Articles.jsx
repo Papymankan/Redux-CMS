@@ -5,8 +5,9 @@ import ArticleBox from "./../../components/ArticleBox/ArticleBox";
 import "./Articles.css";
 import store from "../../Redux/store";
 import { useSelector } from "react-redux";
-import { fetchArticles } from "../../Redux/Reducer/articles";
+import { createArticle, fetchArticles } from "../../Redux/Reducer/articles";
 import { fetchCategories } from "../../Redux/Reducer/categories";
+import Swal from "sweetalert2";
 
 export default function Articles() {
 
@@ -26,6 +27,30 @@ export default function Articles() {
   const articles = useSelector(state => state.articles)
   const categories = useSelector(state => state.categories)
 
+  const addNewArticle = () => {
+    if (title.length && category.length && views.length && desc.length) {
+      store.dispatch(createArticle({
+        url: 'https://redux-cms.iran.liara.run/api/articles', article: {
+          title,
+          category,
+          views,
+          desc,
+        }
+      }))
+      setIsShowModal(false)
+    } else {
+      Swal.fire({
+        title: "<strong>اطلاعات مقاله را کامل وارد کنید</strong>",
+        // icon: "warning",
+        showCloseButton: true,
+        showCancelButton: true,
+        showConfirmButton: false,
+        cancelButtonText: `
+            بستن
+          `
+      })
+    }
+  }
 
   return (
     <div className="col-8 content px-0">
@@ -57,7 +82,6 @@ export default function Articles() {
             </Link>
           </li>
         </ul>
-
         <div
           className={`modal ${isShowModal ? "show-modal" : null}`}
           id="show-info-modal"
@@ -147,7 +171,7 @@ export default function Articles() {
                 <button
                   class="btn btn-primary btn-lg"
                   data-bs-dismiss="modal"
-                // onClick={() => addNewCourse()}
+                  onClick={() => addNewArticle()}
                 >
                   افزودن
                 </button>
@@ -182,7 +206,7 @@ export default function Articles() {
             data-bs-toggle="modal"
             data-bs-target="#new-article"
             id="btn-modal-new-article"
-            onClick={()=>setIsShowModal(true)}
+            onClick={() => setIsShowModal(true)}
           >
             افزودن مقاله جدید
           </button>

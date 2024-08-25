@@ -21,7 +21,7 @@ export const createCategory = createAsyncThunk('categories/createCategory', asyn
                 timer: 1000,
                 showConfirmButton: false
             })
-            store.dispatch(fetchCategories('https://redux-cms.iran.liara.run/api/categories'))
+            store.dispatch(fetchCategories(url))
         }
         return res.json()
     }).then(data => data)

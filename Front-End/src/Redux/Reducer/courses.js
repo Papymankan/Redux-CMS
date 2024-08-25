@@ -21,7 +21,7 @@ export const createCourse = createAsyncThunk('courses/createCourse', async ({url
                 timer: 1000,
                 showConfirmButton: false
             })
-            store.dispatch(fetchCourses('https://redux-cms.iran.liara.run/api/courses'))
+            store.dispatch(fetchCourses(url))
 
         }
         return res.json()
@@ -111,7 +111,6 @@ const slice = createSlice({
             })
             .addCase(createCourse.fulfilled, (state, action) => {
                 console.log(state, action);
-
             })
             .addCase(addDiscount.fulfilled, (state, action) => {
                 console.log(state, action);
