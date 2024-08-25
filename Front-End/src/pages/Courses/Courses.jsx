@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { addDiscount, createCourse, fetchCourses } from "../../Redux/Reducer/courses";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { fetchCategories } from "../../Redux/Reducer/categories";
+import { createCategory, fetchCategories } from "../../Redux/Reducer/categories";
 
 export default function Courses() {
 
@@ -83,6 +83,28 @@ export default function Courses() {
         console.log(res.value);
 
         store.dispatch(addDiscount({ url: 'https://redux-cms.iran.liara.run/api/courses/discount', discount: res.value }))
+      }
+    })
+  }
+
+  const fireCatModal = () => {
+    Swal.fire({
+      title: 'دسته بندی جدید را وارد کنید',
+      input: 'text',
+      inputAttributes: {
+        placeholder: 'مثال فرانت اند',
+      },
+      preConfirm: (value) => {
+        if (!value) {
+          return false;
+        } else true
+      },
+      confirmButtonText: 'اعمال',
+      showCancelButton: true,
+      cancelButtonText: 'انصراف'
+    }).then(res => {
+      if (res.isConfirmed) {
+        store.dispatch(createCategory({url : 'https://redux-cms.iran.liara.run/api/categories' , title : res.value}))
       }
     })
   }
@@ -175,13 +197,13 @@ export default function Courses() {
                       onChange={(e) => {
                         setCategory(e.target.value)
                       }}
-                      value={ category }
+                      value={category}
                     >
                       <option value="none" hidden selected>دسته بندی</option>
                       {
                         categories.map(cat => <option value={cat.title}>{cat.title}</option>)
                       }
-                      
+
                     </select>
                   </div>
 
@@ -289,6 +311,7 @@ export default function Courses() {
           className="btn-custome btn-custome__green btn-modal-new-category"
           data-bs-toggle="modal"
           data-bs-target="#add-new-category"
+          onClick={fireCatModal}
         >
           افزودن دسته بندی
         </button>
