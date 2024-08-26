@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserItem from "../../components/UserItem/UserItem";
-import { fetchUsers } from "../../Redux/Reducer/users";
+import { createUser, fetchUsers } from "../../Redux/Reducer/users";
 import store from "../../Redux/store";
 
 
 import "./Users.css";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 export default function Users() {
 
@@ -22,6 +23,38 @@ export default function Users() {
   const [email, setEmail] = useState('')
   const [age, setAge] = useState('')
   const [city, setCity] = useState('')
+
+  const addNewUser = () => {
+    console.log('ppp');
+    if (name.length && lastName.length &&
+      userName.length &&
+      email.length &&
+      age.length &&
+      city.length) {
+      store.dispatch(createUser({
+        url: 'https://redux-cms.iran.liara.run/api/users', user: {
+          name,
+          lastName,
+          userName,
+          email,
+          age,
+          city
+        }
+      }))
+    } else {
+
+      Swal.fire({
+        title: "<strong>اطلاعات کاربر را کامل وارد کنید</strong>",
+        // icon: "warning",
+        showCloseButton: true,
+        showCancelButton: true,
+        showConfirmButton: false,
+        cancelButtonText: `
+            بستن
+          `
+      })
+    }
+  }
 
   return (
     <div className="col-8 content px-0">
@@ -74,10 +107,13 @@ export default function Users() {
                     <input
                       type="text"
                       name=""
+                      onChange={(e)=>{
+                        setName(e.target.value)
+                      }}
                       value={name}
                       placeholder="نام "
                       className="form-control form__input"
-                      required
+
                     />
                   </div>
 
@@ -87,10 +123,13 @@ export default function Users() {
                     <input
                       type="text"
                       name=""
+                      onChange={(e)=>{
+                        setLastName(e.target.value)
+                      }}
                       value={lastName}
                       placeholder="نام خانوادگی"
                       className="form-control form__input"
-                      required
+
                     />
                   </div>
 
@@ -101,10 +140,13 @@ export default function Users() {
                       lang="en"
                       type="text"
                       name=""
+                      onChange={(e)=>{
+                        setUserName(e.target.value)
+                      }}
                       value={userName}
                       placeholder="نام کاربری"
                       className="form-control form__input"
-                      required
+
                     />
                   </div>
 
@@ -115,10 +157,13 @@ export default function Users() {
                       lang="en"
                       type="email"
                       name=""
+                      onChange={(e)=>{
+                        setEmail(e.target.value)
+                      }}
                       value={email}
                       placeholder="ایمیل"
                       className="form-control form__input"
-                      required
+
                     />
                   </div>
 
@@ -127,11 +172,14 @@ export default function Users() {
 
                     <input
                       lang="en"
-                      type="text"
+                      type="number"
+                      onChange={(e)=>{
+                        setAge(e.target.value)
+                      }}
                       value={age}
                       placeholder="سن "
                       className="form-control form__input"
-                      required
+
                     />
                   </div>
 
@@ -141,15 +189,18 @@ export default function Users() {
                     <input
                       lang="en"
                       type="text"
+                      onChange={(e)=>{
+                        setCity(e.target.value)
+                      }}
                       value={city}
                       placeholder="شهر"
                       className="form-control form__input"
-                      required
+
                     />
                   </div>
 
 
-                  <button className="btn-custome btn-custome__blue col-6 mb-3">
+                  <button className="btn-custome btn-custome__blue col-6 mb-3" onClick={addNewUser}>
                     افزودن کاربر جدید
                   </button>
                 </form>
