@@ -52,31 +52,33 @@ export default function Articles() {
     }
   }
 
+  const theme = useSelector(state => state.theme.mode)
+
   return (
-    <div className="col-8 content px-0">
+    <div className={`col-8 content px-0 ${theme == 'dark' ? 'dark' : ''}`}>
       <div className="content__wrapper d-flex flex-column align-content-between">
         <ul className="content__tabs">
           <li className="content__tab">
-            <Link to="/users" className="content__tab-link">
+            <Link to="/users" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
               <span className="fa fa-user"></span>
               کاربران
             </Link>
           </li>
           <li className="content__tab">
-            <Link to="/infos" className="content__tab-link">
+            <Link to="/infos" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
               <span className="fa fa-book"></span>
               اطلاعات
             </Link>
           </li>
           <li className="content__tab">
-            <Link to="/courses" className="content__tab-link">
+            <Link to="/courses" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
               <span className="fa fa-store"></span>
               دوره‌ها
             </Link>
           </li>
 
           <li className="content__tab">
-            <Link to="/articles" className="content__tab-link">
+            <Link to="/articles" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
               <span className="fa fa-newspaper"></span>
               وبلاگ
             </Link>
@@ -87,12 +89,12 @@ export default function Articles() {
           id="show-info-modal"
         >
           <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-            <div class="modal-content">
+            <div class={`modal-content ${theme == 'dark' ? 'dark' : ''}`}>
               <div class="modal-header">
                 <h4 class="modal-title">دوره جدید</h4>
                 <button
                   type="button"
-                  class="btn-close py-0"
+                  class={`btn-close py-0 ${theme == 'dark' ? 'dark' : ''}`}
                   data-bs-dismiss="modal"
                   onClick={() => setIsShowModal(false)}
                 ></button>
@@ -200,9 +202,9 @@ export default function Articles() {
           </div>
         </div>
 
-        <div className="new-article">
+        <div className={`new-article ${theme == 'dark' ? 'dark' : ''}`}>
           <button
-            className="btn-custome btn-custome__blue"
+            className={`btn-custome btn-custome__blue ${theme == 'dark' ? 'dark' : ''}`}
             data-bs-toggle="modal"
             data-bs-target="#new-article"
             id="btn-modal-new-article"

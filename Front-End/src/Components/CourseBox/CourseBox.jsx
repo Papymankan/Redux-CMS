@@ -2,6 +2,7 @@ import React from "react";
 import Swal from "sweetalert2";
 import { removeCourse } from "../../Redux/Reducer/courses";
 import store from "../../Redux/store";
+import { useSelector } from "react-redux";
 
 export default function CourseBox({ title, category, price, registersCount, discount, desc, _id }) {
 
@@ -26,13 +27,14 @@ export default function CourseBox({ title, category, price, registersCount, disc
       }
     })
   }
+  const theme = useSelector(state => state.theme.mode)
 
   return (
-    <div className="products__item dark">
+    <div className={`products__item ${theme == 'dark' ? 'dark' : ''}`}>
       <img
         src="../../img/store/redux.png"
         alt="product-img-1"
-        className="products__img dark"
+        className={`products__img ${theme == 'dark' ? 'dark' : ''}`}
       />
       <div className="products__details w-100">
         <div className="products__info">
@@ -41,7 +43,7 @@ export default function CourseBox({ title, category, price, registersCount, disc
             {desc}
           </p>
         </div>
-        <div className="products__tags ">
+        <div className={`products__tags ${theme == 'dark' ? 'dark' : ''}`}>
           <div className="products__boxes">
             <div className="products__price-box">
               <span className="fa fa-wallet"></span>

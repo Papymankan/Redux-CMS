@@ -55,169 +55,178 @@ export default function Users() {
       })
     }
   }
+  const theme = useSelector(state => state.theme.mode)
 
   return (
-    <div className="col-8 content px-0">
+    <div className={`${theme == 'dark' ? 'dark' : ''} col-8 content px-0 `}>
       <div className="content__wrapper">
         <ul className="content__tabs">
           <li className="content__tab">
-            <Link to="/users" className="content__tab-link">
+            <Link to="/users" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
               <span className="fa fa-user"></span>
               کاربران
             </Link>
           </li>
           <li className="content__tab">
-            <Link to="/infos" className="content__tab-link">
+            <Link to="/infos" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
               <span className="fa fa-book"></span>
               اطلاعات
             </Link>
           </li>
           <li className="content__tab">
-            <Link to="/courses" className="content__tab-link">
+            <Link to="/courses" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
               <span className="fa fa-store"></span>
               دوره‌ها
             </Link>
           </li>
 
           <li className="content__tab">
-            <Link to="/articles" className="content__tab-link">
+            <Link to="/articles" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
               <span className="fa fa-newspaper"></span>
               وبلاگ
             </Link>
           </li>
         </ul>
+        {
+          users.length > 0 ?
+            (
+              <>
+                <div className={`information ${theme == 'dark' ? 'dark' : ''}`}>
+                  <div id="accordion">
+                    <div className={`card ${theme == 'dark' ? 'dark' : ''}`}>
+                      <div className="card-header">
+                        <a className="btn" data-bs-toggle="collapse" href="#collapseOne">
+                          کاربر جدید
+                        </a>
+                      </div>
+                      <div
+                        id="collapseOne"
+                        className="collapse show"
+                        data-bs-parent="#accordion"
+                      >
+                        <div className={`card-body information-current-admin-wrapper-form p-4 ${theme == 'dark' ? 'dark' : ''}`}>
+                          <form action="#" className="form row mx-0">
+                            <div className="form__box-input col-6 px-2 py-3">
+                              <span className="fa fa-user form__icon"></span>
+                              <input
+                                type="text"
+                                name=""
+                                onChange={(e) => {
+                                  setName(e.target.value)
+                                }}
+                                value={name}
+                                placeholder="نام "
+                                className="form-control form__input"
 
-        <div className="users">
+                              />
+                            </div>
 
-          <div className="card">
-            <div className="card-header">
-              <a className="btn" data-bs-toggle="collapse" href="#collapseOne">
-                کاربر جدید
-              </a>
-            </div>
-            <div
-              id="collapseOne"
-              className="collapse show"
-              data-bs-parent="#accordion"
-            >
-              <div className="card-body information-current-admin-wrapper-form p-4">
-                <form action="#" className="form row mx-0">
-                  <div className="form__box-input col-6 px-2 py-3">
-                    <span className="fa fa-user form__icon"></span>
-                    <input
-                      type="text"
-                      name=""
-                      onChange={(e)=>{
-                        setName(e.target.value)
-                      }}
-                      value={name}
-                      placeholder="نام "
-                      className="form-control form__input"
+                            <div className="form__box-input col-6 px-2 py-3">
+                              <span className="fa fa-user form__icon"></span>
 
-                    />
+                              <input
+                                type="text"
+                                name=""
+                                onChange={(e) => {
+                                  setLastName(e.target.value)
+                                }}
+                                value={lastName}
+                                placeholder="نام خانوادگی"
+                                className="form-control form__input"
+
+                              />
+                            </div>
+
+                            <div className="form__box-input col-6 px-2 py-3">
+                              <span className="fa fa-address-book form__icon"></span>
+
+                              <input
+                                lang="en"
+                                type="text"
+                                name=""
+                                onChange={(e) => {
+                                  setUserName(e.target.value)
+                                }}
+                                value={userName}
+                                placeholder="نام کاربری"
+                                className="form-control form__input"
+
+                              />
+                            </div>
+
+                            <div className="form__box-input col-6 px-2 py-3">
+                              <span className="fa fa-globe form__icon"></span>
+
+                              <input
+                                lang="en"
+                                type="email"
+                                name=""
+                                onChange={(e) => {
+                                  setEmail(e.target.value)
+                                }}
+                                value={email}
+                                placeholder="ایمیل"
+                                className="form-control form__input"
+
+                              />
+                            </div>
+
+                            <div className="form__box-input col-6 px-2 py-3">
+                              <span className="fa fa-calendar form__icon"></span>
+
+                              <input
+                                lang="en"
+                                type="number"
+                                onChange={(e) => {
+                                  setAge(e.target.value)
+                                }}
+                                value={age}
+                                placeholder="سن "
+                                className="form-control form__input"
+
+                              />
+                            </div>
+
+                            <div className="form__box-input col-6 px-2 py-3">
+                              <span className="fa fa-home form__icon"></span>
+
+                              <input
+                                lang="en"
+                                type="text"
+                                onChange={(e) => {
+                                  setCity(e.target.value)
+                                }}
+                                value={city}
+                                placeholder="شهر"
+                                className="form-control form__input"
+
+                              />
+                            </div>
+
+
+                            <button className={`btn-custome btn-custome__blue col-6 mb-3 ${theme == 'dark' ? 'dark' : ''}`} onClick={addNewUser}>
+                              افزودن کاربر جدید
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <div className="form__box-input col-6 px-2 py-3">
-                    <span className="fa fa-user form__icon"></span>
-
-                    <input
-                      type="text"
-                      name=""
-                      onChange={(e)=>{
-                        setLastName(e.target.value)
-                      }}
-                      value={lastName}
-                      placeholder="نام خانوادگی"
-                      className="form-control form__input"
-
-                    />
+                </div>
+                <div className="users">
+                  <div className="users__list-container">
+                    <div className="users__list users__list-wrapper">
+                      {
+                        users.map(user => <UserItem key={user._id} {...user} />)
+                      }
+                    </div>
                   </div>
+                </div>
+              </>
+            )
+            : <div class="loader"></div>
+        }
 
-                  <div className="form__box-input col-6 px-2 py-3">
-                    <span className="fa fa-address-book form__icon"></span>
-
-                    <input
-                      lang="en"
-                      type="text"
-                      name=""
-                      onChange={(e)=>{
-                        setUserName(e.target.value)
-                      }}
-                      value={userName}
-                      placeholder="نام کاربری"
-                      className="form-control form__input"
-
-                    />
-                  </div>
-
-                  <div className="form__box-input col-6 px-2 py-3">
-                    <span className="fa fa-globe form__icon"></span>
-
-                    <input
-                      lang="en"
-                      type="email"
-                      name=""
-                      onChange={(e)=>{
-                        setEmail(e.target.value)
-                      }}
-                      value={email}
-                      placeholder="ایمیل"
-                      className="form-control form__input"
-
-                    />
-                  </div>
-
-                  <div className="form__box-input col-6 px-2 py-3">
-                    <span className="fa fa-calendar form__icon"></span>
-
-                    <input
-                      lang="en"
-                      type="number"
-                      onChange={(e)=>{
-                        setAge(e.target.value)
-                      }}
-                      value={age}
-                      placeholder="سن "
-                      className="form-control form__input"
-
-                    />
-                  </div>
-
-                  <div className="form__box-input col-6 px-2 py-3">
-                    <span className="fa fa-home form__icon"></span>
-
-                    <input
-                      lang="en"
-                      type="text"
-                      onChange={(e)=>{
-                        setCity(e.target.value)
-                      }}
-                      value={city}
-                      placeholder="شهر"
-                      className="form-control form__input"
-
-                    />
-                  </div>
-
-
-                  <button className="btn-custome btn-custome__blue col-6 mb-3" onClick={addNewUser}>
-                    افزودن کاربر جدید
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div className="users__list-container">
-            <div className="users__list users__list-wrapper">
-              {
-                users.length > 0 ?
-                  users.map(user => <UserItem key={user._id} {...user} />) :
-                  <div class="loader"></div>
-              }
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

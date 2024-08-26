@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import store from '../../Redux/store'
 import { removeUser } from '../../Redux/Reducer/users'
 import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
 
 export default function UserItem({ firstname, lastname, username, city, age, email, _id }) {
 
@@ -41,6 +42,7 @@ export default function UserItem({ firstname, lastname, username, city, age, ema
         })
     }
 
+    const theme = useSelector(state => state.theme.mode)
 
     return (
 
@@ -50,12 +52,12 @@ export default function UserItem({ firstname, lastname, username, city, age, ema
                 id="show-info-modal"
             >
                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class={`modal-content ${theme == 'dark' ? 'dark' : ''}`}>
                         <div class="modal-header">
                             <h4 class="modal-title">جزئیات</h4>
                             <button
                                 type="button"
-                                class="btn-close py-0"
+                                class={`btn-close py-0 ${theme == 'dark' ? 'dark' : ''}`}
                                 data-bs-dismiss="modal"
                                 onClick={() => setIsShowModal(false)}
                             ></button>
@@ -185,9 +187,9 @@ export default function UserItem({ firstname, lastname, username, city, age, ema
                     </div>
                 </div>
                 <div className="users__btns">
-                    <button className="btn-custome btn-custome--gray" onClick={() => showNotifs()}>پیام ها</button>
-                    <button className="btn-custome btn-custome__blue" onClick={() => setIsShowModal(true)}>جزئیات</button>
-                    <button className="btn-custome btn-custome__red" onClick={() => removeHandler(_id)}>حذف</button>
+                    <button className={`btn-custome btn-custome--gray ${theme == 'dark' ? 'dark' : ''}`} onClick={() => showNotifs()}>پیام ها</button>
+                    <button className={`btn-custome btn-custome__blue ${theme == 'dark' ? 'dark' : ''}`} onClick={() => setIsShowModal(true)}>جزئیات</button>
+                    <button className={`btn-custome btn-custome__red ${theme == 'dark' ? 'dark' : ''}`} onClick={() => removeHandler(_id)}>حذف</button>
                 </div>
             </div>
         </>

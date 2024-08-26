@@ -1,16 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 export default function SideBar() {
+    const theme = useSelector(state => state.theme.mode)
+
     return (
         <div className="col-10 col-md-3 sidebar mx-auto mx-md-0 px-0">
             <div className="sidebar-content">
-                <div className="card position-relative text-center">
+                <div className={`card position-relative text-center ${theme == 'dark' ? 'dark' : ''}`}>
                     <img
                         className="card-img-top sidebar__img-banner"
                         src="../../img/admin/banner/banner.png"
                         alt="banner admin photo"
                     />
-                    <div className="card-body">
+                    <div className={`card-body ${theme == 'dark' ? 'dark' : ''}`}>
                         <h4 className="card-title sidebar__top-name">محمدامین سعیدی راد</h4>
                         <p className="card-text sidebar__top-email" lang="en">
                             توسعه دهنده جاوا اسکریپت
@@ -40,7 +43,7 @@ export default function SideBar() {
                                 </p>
                             </li>
                         </ul>
-                        <button className="btn-custome btn-custome__blue btn-sidebar w-100">
+                        <button className={`btn-custome btn-custome__blue btn-sidebar w-100 ${theme == 'dark' ? 'dark' : ''}`}>
                             تغییر اطلاعات
                             <span className="fa fa-pencil"></span>
                         </button>

@@ -2,6 +2,7 @@ import React from "react";
 import store from "../../Redux/store";
 import { removeArticle } from "../../Redux/Reducer/articles";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
 
 export default function ArticleBox({ title, category, views, desc, _id }) {
 
@@ -26,13 +27,14 @@ export default function ArticleBox({ title, category, views, desc, _id }) {
       }
     })
   }
+  const theme = useSelector(state => state.theme.mode)
 
   return (
     <div className="articles__item">
       <img
         src="../../img/store/products/product-img-1.jpg"
         alt="product-img-1"
-        className="articles__img"
+        className={`articles__img ${theme == 'dark' ? 'dark' : ''}`}
       />
       <div className="articles__details w-100">
         <div className="articles__info">
@@ -41,7 +43,7 @@ export default function ArticleBox({ title, category, views, desc, _id }) {
             {desc}
           </p>
         </div>
-        <div className="articles__tags">
+        <div className={`articles__tags ${theme == 'dark' ? 'dark' : ''}`}>
           <div className="articles__boxes">
             <div className="articles__category-box d-flex gap-2 align-items-center">
               <span className="fa fa-tags"></span>
