@@ -8,6 +8,7 @@ import store from "../../Redux/store";
 import "./Users.css";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import HeaderLinks from "../../Components/HeaderLinks/HeaderLinks";
 
 export default function Users() {
 
@@ -60,39 +61,13 @@ export default function Users() {
   return (
     <div className={`${theme == 'dark' ? 'dark' : ''} col-8 content px-0 `}>
       <div className="content__wrapper">
-        <ul className="content__tabs">
-          <li className="content__tab">
-            <Link to="/users" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
-              <span className="fa fa-user"></span>
-              کاربران
-            </Link>
-          </li>
-          <li className="content__tab">
-            <Link to="/infos" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
-              <span className="fa fa-book"></span>
-              اطلاعات
-            </Link>
-          </li>
-          <li className="content__tab">
-            <Link to="/courses" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
-              <span className="fa fa-store"></span>
-              دوره‌ها
-            </Link>
-          </li>
-
-          <li className="content__tab">
-            <Link to="/articles" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
-              <span className="fa fa-newspaper"></span>
-              وبلاگ
-            </Link>
-          </li>
-        </ul>
+       <HeaderLinks/>
         {
           users.length > 0 ?
             (
               <>
                 <div className={`information ${theme == 'dark' ? 'dark' : ''}`}>
-                  <div id="accordion">
+                  <div id="accordion" style={theme == 'dark' ? {border:'1px solid var(--light)'} : {}}>
                     <div className={`card ${theme == 'dark' ? 'dark' : ''}`}>
                       <div className="card-header">
                         <a className="btn" data-bs-toggle="collapse" href="#collapseOne">

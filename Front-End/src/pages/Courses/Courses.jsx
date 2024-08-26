@@ -7,6 +7,7 @@ import { addDiscount, createCourse, fetchCourses } from "../../Redux/Reducer/cou
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { createCategory, fetchCategories } from "../../Redux/Reducer/categories";
+import HeaderLinks from "../../Components/HeaderLinks/HeaderLinks";
 
 export default function Courses() {
 
@@ -113,33 +114,7 @@ export default function Courses() {
   return (
     <div className={`col-8 content px-0 ${theme == 'dark' ? 'dark' : ''}`}>
       <div className="content__wrapper d-flex flex-column align-content-between">
-        <ul className="content__tabs">
-          <li className="content__tab">
-            <Link to="/users" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
-              <span className="fa fa-user"></span>
-              کاربران
-            </Link>
-          </li>
-          <li className="content__tab">
-            <Link to="/infos" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
-              <span className="fa fa-book"></span>
-              اطلاعات
-            </Link>
-          </li>
-          <li className="content__tab">
-            <Link to="/courses" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
-              <span className="fa fa-store"></span>
-              دوره‌ها
-            </Link>
-          </li>
-
-          <li className="content__tab">
-            <Link to="/articles" className={`content__tab-link ${theme == 'dark' ? 'dark' : ''}`}>
-              <span className="fa fa-newspaper"></span>
-              وبلاگ
-            </Link>
-          </li>
-        </ul>
+       <HeaderLinks/>
 
         <div
           className={`modal ${isShowModal ? "show-modal" : null}`}
