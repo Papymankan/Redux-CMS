@@ -185,7 +185,7 @@ export default function Infos() {
               </div>
               <div
                 id="collapseTwo"
-                className="collapse"
+                className="collapse show"
                 data-bs-parent="#accordion"
               >
                 <div className="row justify-content-center mx-0 p-4">
