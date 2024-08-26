@@ -179,7 +179,7 @@ export default function UserItem({ firstname, lastname, username, city, age, ema
                         alt="photo user"
                         className="users__img"
                     />
-                    <div className="users__details">
+                    <div className={`users__details ${theme == 'dark' ? 'dark' : ''}`}>
                         <p className="users__name my-0">{firstname} {lastname}</p>
                         <p lang="en" className="users__email">
                             {email}

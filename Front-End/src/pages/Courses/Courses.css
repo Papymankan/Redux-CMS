@@ -162,6 +162,10 @@
     color: var(--light) !important;
   }
   
+  .dark .users__details{
+    color: var(--light) !important;
+  }
+  
   .dark .products__img {
     filter: brightness(60%) !important;
   }

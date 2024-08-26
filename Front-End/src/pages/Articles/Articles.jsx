@@ -121,6 +121,7 @@ export default function Articles() {
                     <span class="fa fa-bars form__icon"></span>
                     <select name="category"
                       id="categories-box"
+                      className="form__input"
                       onChange={(e) => {
                         setCategory(e.target.value)
                       }}
