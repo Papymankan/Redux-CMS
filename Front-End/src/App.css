@@ -346,7 +346,7 @@ body {
   color: var(--light) !important;
 }
 
-.form__input:focus {
+.dark .form__input:focus {
   background-color: var(--primary-color) !important;
 
 }
